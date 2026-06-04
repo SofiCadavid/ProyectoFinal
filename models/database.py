@@ -13,7 +13,7 @@ class Database:
 
     def connect(self): # Abre la conexion con MySQL
         try:
-            self.connection = mysql.connector.connect(**self.config)
+            self.connection = mysql.connector.connect(use_pure=True, **self.config)
             if self.connection.is_connected():
                 return self.connection
         except Error as e:
