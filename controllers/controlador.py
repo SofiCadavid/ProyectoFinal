@@ -1,8 +1,4 @@
-"""
-controlador.py  (versión ampliada — reemplaza al archivo original)
-Añade los métodos para los módulos DICOM, Señales y Tablas.
-Los primeros métodos (login, cámara) permanecen intactos.
-"""
+
 
 import cv2
 import sys
@@ -53,9 +49,8 @@ class Coordinador:
 
         self.usuario_actual = None
 
-    # ───────────────────────────────────────────────────────────────
     # FLUJO DE AUTENTICACIÓN (sin cambios respecto al original)
-    # ───────────────────────────────────────────────────────────────
+ 
     def arrancar_aplicacion(self):
         self.v_bienvenida.show()
 
@@ -92,9 +87,9 @@ class Coordinador:
             QMessageBox.warning(self.v_camara, "Error", "No se pudo capturar la foto. Reintente.")
             self.v_camara.encender_refresco()
 
-    # ───────────────────────────────────────────────────────────────
+
     # MÓDULO DICOM
-    # ───────────────────────────────────────────────────────────────
+   
     def cargar_dicom(self, carpeta):
         """Carga la serie DICOM, actualiza sliders y muestra corte central."""
         exito, mensaje = self.modelo_dicom.cargar_serie_dicom(carpeta)
@@ -166,10 +161,9 @@ class Coordinador:
         morfologica  = self.modelo_dicom.aplicar_morfologia(binarizada, tipo_morf, tam_kernel)
 
         self.v_dashboard.mostrar_segmentacion(binarizada, morfologica)
-
-    # ───────────────────────────────────────────────────────────────
+        
     # MÓDULO SEÑALES
-    # ───────────────────────────────────────────────────────────────
+  
     def cargar_señal(self, ruta):
         exito, mensaje = self.modelo_senales.cargar_mat(ruta)
         if exito:
@@ -202,9 +196,8 @@ class Coordinador:
         else:
             QMessageBox.warning(self.v_dashboard, "Sin datos", "Primero cargue un archivo .mat.")
 
-    # ───────────────────────────────────────────────────────────────
     # MÓDULO TABLAS
-    # ───────────────────────────────────────────────────────────────
+   
     def cargar_tabla(self, ruta):
         exito, mensaje = self.modelo_tablas.cargar_archivo(ruta)
         if not exito:
@@ -241,9 +234,8 @@ class Coordinador:
             QMessageBox.warning(self.v_dashboard, "Sin datos", "Seleccione columnas válidas.")
 
 
-# ───────────────────────────────────────────────────────────────────
 # PUNTO DE ENTRADA
-# ───────────────────────────────────────────────────────────────────
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     coordinador = Coordinador()
