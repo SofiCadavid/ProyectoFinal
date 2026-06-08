@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>700</height>
+    <height>692</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -145,8 +145,8 @@ QHeaderView::section { background-color: #DFF7EE; color: #0F766E; padding: 6px; 
     <widget class="QPushButton" name="btnCerrarSesion">
      <property name="geometry">
       <rect>
-       <x>25</x>
-       <y>635</y>
+       <x>20</x>
+       <y>610</y>
        <width>210</width>
        <height>45</height>
       </rect>
@@ -164,12 +164,12 @@ QHeaderView::section { background-color: #DFF7EE; color: #0F766E; padding: 6px; 
      <rect>
       <x>260</x>
       <y>0</y>
-      <width>840</width>
-      <height>700</height>
+      <width>831</width>
+      <height>661</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="pageInicio">
      <widget class="QLabel" name="labelBienvenidaUsuario">
@@ -629,91 +629,208 @@ QHeaderView::section { background-color: #DFF7EE; color: #0F766E; padding: 6px; 
      </widget>
     </widget>
     <widget class="QWidget" name="pageDicom">
-     <widget class="QLabel" name="labelDicomInfo">
+     <widget class="QLabel" name="lblDicom">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>300</y>
-        <width>780</width>
-        <height>80</height>
+        <y>110</y>
+        <width>781</width>
+        <height>491</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+      <property name="styleSheet">
+       <string notr="true">background-color: #000000; 
+border-radius: 12px;
+color: #777777;
+</string>
       </property>
       <property name="text">
-       <string>Modulo DICOM / NIFTI
-(en construccion - a cargo del equipo)</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
-      <property name="wordWrap">
-       <bool>true</bool>
+     </widget>
+     <widget class="QPushButton" name="btnCargarDicom">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>60</y>
+        <width>301</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #14B87A; 
+color: #FFFFFF; 
+border: none; 
+border-radius: 8px; 
+font-weight: bold;
+padding: 8px;</string>
+      </property>
+      <property name="text">
+       <string>Seleccionar Carpeta Dicom</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="sliderCortes">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>610</y>
+        <width>281</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* La barra de fondo por donde se desliza */
+QSlider::groove:horizontal {
+    border: none;
+    height: 6px;
+    background: #E0E0E0;
+    border-radius: 3px;
+}
+
+/* El botón redondo que arrastras */
+QSlider::handle:horizontal {
+    background: #14B87A; /* El verde brillante de Vitalis */
+    border: none;
+    width: 16px;
+    height: 16px;
+    margin: -5px 0; /* Lo centra perfectamente sobre la barra */
+    border-radius: 8px; /* Lo hace completamente redondo */
+}
+
+/* Cambia de color cuando el médico pasa el mouse por encima del botón */
+QSlider::handle:horizontal:hover {
+    background: #0F766E; /* El verde oscuro del Sidebar */
+    background-color: qradialgradient(cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 #14B87A, stop:1 #0F766E);
+}
+
+/* La barra que se va llenando a la izquierda del botón */
+QSlider::sub-page:horizontal {
+    background: #7DCAA6; /* Un verde más suave para el progreso */
+    border-radius: 3px;
+}</string>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="pageSenales">
-     <widget class="QLabel" name="labelSenalesInfo">
+     <widget class="QPushButton" name="btnCargarSenal">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>300</y>
-        <width>780</width>
-        <height>80</height>
+        <x>140</x>
+        <y>80</y>
+        <width>241</width>
+        <height>31</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+      <property name="styleSheet">
+       <string notr="true">background-color: #14B87A; 
+color: #FFFFFF; 
+border: none; 
+border-radius: 8px; 
+font-weight: bold;
+padding: 8px;</string>
       </property>
       <property name="text">
-       <string>Modulo Senales Biomedicas
-(en construccion - a cargo del equipo)</string>
+       <string>Cargar Señal Biomédica</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboCanales">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>80</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="accessibleName">
+       <string>Seleccione</string>
+      </property>
+      <property name="accessibleDescription">
+       <string>Seleccione</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #cccccc; 
+border-radius: 8px; 
+padding: 6px; 
+background: #FFFFFF;
+width: 200px;</string>
+      </property>
+      <property name="currentText">
+       <string>Seleccione el canal...</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Seleccione el canal...</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="lblGraficaSenal">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>140</y>
+        <width>771</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #FAFFFC; 
+border: 2px dashed #7DCAA6; 
+border-radius: 12px; 
+color: #0F766E;
+font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="pageDatos">
-     <widget class="QLabel" name="labelDatosInfo">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>300</y>
-        <width>780</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Modulo Datos Tabulares
-(en construccion - a cargo del equipo)</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTableWidget" name="tablaDescribeDf"/>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="tablaInfoDf"/>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboColGraficar"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnCargarTabla">
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #14B87A; 
+color: #FFFFFF; 
+border: none; 
+border-radius: 8px; 
+font-weight: bold;
+padding: 8px;</string>
+        </property>
+        <property name="text">
+         <string>Cargar Tabla (CSV/Excel)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>

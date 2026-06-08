@@ -78,5 +78,37 @@ class VentanaDashboard(QMainWindow):
         super().__init__()
         loadUi("views/ui/dashboard.ui", self)
         self.__miCoordinador = coordinador
+        self.v_dashboard.btnCargarTabla.clicked.connect(self.cargar_archivo_tabla)
+        if hasattr(self.v_dashboard, 'comboColGraficar') and self.v_dashboard.comboColGraficar:
+            self.v_dashboard.comboColGraficar.currentIndexChanged.connect(self.graficar_columna)
+
+        # Eventos de la página de DICOM
+        self.v_dashboard.btnCargarDicom.clicked.connect(self.seleccionar_carpeta_dicom)
+        self.v_dashboard.sliderCortes.valueChanged.connect(self.cambiar_corte_dicom)
+
+        # Eventos de la página de Señales Biomédicas
+        self.v_dashboard.btnCargarSenal.clicked.connect(self.cargar_archivo_mat)
+        self.v_dashboard.comboCanales.currentIndexChanged.connect(self.actualizar_grafica_senal)
         
-        # Más adelante, aquí conectaremos los botones laterales (btnNavDicom, etc.)
+    # === MÉTODOS PARA EL MÓDULO DE DATOS ===
+    def cargar_archivo_tabla(self):
+        print("Botón 'Cargar Tabla' presionado")
+
+    def graficar_columna(self):
+        columna = self.comboColGraficar.currentText()
+        print(f"Columna seleccionada: {columna}")
+
+    # === MÉTODOS PARA EL MÓDULO DICOM ===
+    def seleccionar_carpeta_dicom(self):
+        print("Buscando carpeta DICOM...")
+
+    def cambiar_corte_dicom(self, posicion):
+        print(f"Moviendo al corte: {posicion}")
+
+    # === MÉTODOS PARA EL MÓDULO DE SEÑALES ===
+    def cargar_archivo_mat(self):
+        print("Cargando archivo .mat...")
+
+    def actualizar_grafica_senal(self):
+        canal = self.comboCanales.currentText()
+        print(f"Canal seleccionado: {canal}")

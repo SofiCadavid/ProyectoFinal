@@ -1,18 +1,17 @@
-
-
 import cv2
 import sys
 from PyQt5.QtWidgets import QApplication, QMessageBox
 
 # Modelos
-from models.Modelo        import SistemaBaseDatos, ControlCamara
-from models.modelo_dicom  import ModeloDicom
+from models.modelo_db import SistemaBaseDatos
+from models.modelo_camara import ControlCamara
+from models.modelo_dicom import ModeloDicom
 from models.modelo_senales import ModeloSenales
 from models.modelo_tablas import ModeloTablas
 
 # Vistas
-from views.Vista            import VentanaBienvenida, VentanaLogin, VentanaCamara
-from views.VentanaDashboard import VentanaDashboard
+from views.Vista import VentanaBienvenida, VentanaLogin, VentanaCamara, VentanaDashboard
+
 
 # Mapeos de constantes OpenCV para no exponer cv2 a la Vista
 _TIPOS_UMBRAL = {
@@ -232,7 +231,7 @@ class Coordinador:
             self.v_dashboard.mostrar_scatter(sx, sy, col_x, col_y)
         else:
             QMessageBox.warning(self.v_dashboard, "Sin datos", "Seleccione columnas válidas.")
-
+    
 
 # PUNTO DE ENTRADA
 
